@@ -3,7 +3,7 @@ const mongoose=require('mongoose');
 mongoose.connect('mongodb://localhost:27017/ershou',err=>console.log(err)  )
 
 mongoose.model('user', new mongoose.Schema({
-    userName : String, //姓名
+    name : String, //姓名
     password : String, //密码
     phone : String,    //手机
     myPubGoods : Array,//发布货物ID
