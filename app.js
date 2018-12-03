@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //允许跨域
 app.all('*',function(req,res,next) {
   res.header("Access-Control-Allow-Origin","*");
-  res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Content-Length,Authorization, Accept,yourHeaderFeild");
+  res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Content-Length,Authorization, token,cache,Accept,yourHeaderFeild");
   res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
   res.header("X-Powered-By",' 3.2.1')
   res.header("Content-Type","application/json;charset=utf-8");
