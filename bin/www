@@ -12,7 +12,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(80);//腾讯云服务器上已经改为80
+var port = normalizePort(8080);//记得部署到腾讯云服务器上要改为8080
 app.set('port', port);
 
 /**

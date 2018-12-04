@@ -19,10 +19,8 @@ router.post('/',function(req,res,next){
         callback=>{
             user.findOne({name},(err,data)=>{
                 if(data){
-                    console.log('user',data)
                     if(data.password === password) {
                         response.user = data
-                        console.log('登录成功')
                         callback()
                     }
                     else res.json({code:2,data:'密码错误'})
@@ -32,8 +30,6 @@ router.post('/',function(req,res,next){
         callback=>{
             good.find({},(err,data)=>{//为首页获取所有good,包括我的（登录者）
                 response.good = data
-                console.log('找good')
-                console.log('good',data)
                 callback()
             });
            
@@ -41,13 +37,11 @@ router.post('/',function(req,res,next){
         callback=>{
             need.find({},(err,data)=>{//为首页获取所有need,包括我的（登录者）
                 response.need = data
-                console.log('找need')
                 callback()
             })
         },
     ]
     ,(err,result)=>{
-        console.log('response',response)
         res.json({code:0,data:response})
     })
     

@@ -6,7 +6,7 @@ var user = model.getModel('user');
 var good = model.getModel('good');
 var need = model.getModel('need');
  let resObj={};
-
+//这条路由是为了开发时调试
 router.get('/',(req,res)=>{
     user.find({},(err,data)=>{
         resObj.user = data
