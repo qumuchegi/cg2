@@ -3,7 +3,7 @@ cg2是 小跳蚤app 的服务器
  
 # 功能：
 
-     [用于服务‘小跳蚤’react app](https://github.com/qumuchegi/xiaotiaozaoapp)
+  [用于服务‘小跳蚤’react app](https://github.com/qumuchegi/xiaotiaozaoapp)
      
 # 技术栈：
      用 express-generator 生成程序框架
