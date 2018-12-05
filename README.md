@@ -1,5 +1,5 @@
 # cg2
-小跳蚤app 服务器
+cg2是 小跳蚤app 的服务器
  
 # 功能：
 
@@ -14,3 +14,5 @@
      async（异步流程控制）
      body-parser（http请求体解析）
      mongoose （mongodb的node.js驱动)
+  
+# 
