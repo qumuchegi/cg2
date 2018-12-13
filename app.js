@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const WebSocket = require('ws');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -11,9 +12,9 @@ var allRouter = require('./routes/getall')
 var loginRouter = require('./routes/login')
 var goodsPub = require('./routes/goodsPub')
 var needpub = require('./routes/needsPub')
-var tiaozaoapp = require('./routes/tiaozaoapp')
-
+ 
 var app = express();
+///
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,6 +36,33 @@ app.all('*',function(req,res,next) {
   next();
   });
 
+  ///为单片机项目
+  var http = require('http');
+  var server = http.createServer(app);
+  const wss = new WebSocket.Server({server});
+  wss.on('connection',function(ws){
+    console.log('ws connected!');
+    ws.on('message',function(data){
+      console.log('message',data)
+      wss.clients.forEach(client=>client.send(data))
+    })
+  })
+
+  server.listen(9093,console.log('server'))
+  /*
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+io.on('connection',function(socket){
+  socket.on('sendon',function(data){
+    const {on} = data;
+    io.emit('recon',{on})
+  })
+})
+
+server.listen(9093,console.log('server'))
+*/
+///
+///
 //app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/register',registerRouter)
@@ -42,8 +70,7 @@ app.use('/getall',allRouter)
 app.use('/login',loginRouter)
 app.use('/goodspub',goodsPub)
 app.use('/needspub',needpub)
-app.use('/tiaozaoapp',tiaozaoapp)
-
+ 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
