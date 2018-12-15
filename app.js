@@ -37,9 +37,9 @@ app.all('*',function(req,res,next) {
   });
 
   ///为单片机项目
-  var http = require('http');
-  var server = http.createServer(app);
-  const wss = new WebSocket.Server({server});
+  //var http = require('http');
+  //var server1 = http.createServer(app);
+  const wss = new WebSocket.Server({port:9093});
   wss.on('connection',function(ws){
     console.log('ws connected!');
     ws.on('message',function(data){
@@ -48,18 +48,20 @@ app.all('*',function(req,res,next) {
     })
   })
 
-  server.listen(9093,console.log('server'))
+ // server.listen(9093,console.log('server'))
+ //module.exports = server1;
   /*
-const server = require('http').Server(app);
-const io = require('socket.io')(server);
+const server1 = require('http').Server(app);
+const io = require('socket.io')(server1);
 io.on('connection',function(socket){
-  socket.on('sendon',function(data){
-    const {on} = data;
-    io.emit('recon',{on})
+  console.log('socket.io connected')
+  socket.on('send',function(data){
+    const {light} = data;
+    io.emit('rec',{light})
   })
 })
 
-server.listen(9093,console.log('server'))
+server1.listen(9091,console.log('server1'))
 */
 ///
 ///

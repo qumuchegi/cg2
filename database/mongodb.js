@@ -23,6 +23,7 @@ mongoose.model('need',new mongoose.Schema({
     price:String, //接受价格
     discription:String, //需求货物要求
 }))
+ 
 module.exports = {
     getModel:function(modelname){
         return mongoose.model(modelname)
